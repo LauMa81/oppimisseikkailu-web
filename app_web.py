@@ -208,17 +208,27 @@ def lataa_edistyminen():
 
 def nimi_sivu():
     """Näyttää nimen kysymissivun"""
-    st.markdown('<h1 class="main-header">🌟 Oppimisseikkailu 🌟</h1>', unsafe_allow_html=True)
+    st.title("🌟 Oppimisseikkailu 🌟")
+    
+    # Ohjepainike ylänurkkaan
+    if st.button("ℹ️ Mitä tämä on?", help="Lue tarina ja ohjeet"):
+        st.session_state.current_page = "ohje"
+        st.rerun()
     
     col1, col2, col3 = st.columns([1, 2, 1])
     
     with col2:
-        st.markdown("""
-        <div class="game-card">
-            <h2 style="font-size: 1.8rem; color: #333; margin-bottom: 1rem;">Tervetuloa oppimaan! 📚</h2>
-            <p style="font-size: 1.2rem; color: #666; line-height: 1.5;">Kerro meille nimesi, niin voimme seurata edistymistäsi:</p>
-        </div>
-        """, unsafe_allow_html=True)
+        st.subheader("💝 Tervetuloa oppimaan!")
+        
+        st.info("""
+        💕 **Tämä sovellus syntyi rakkaudesta omaa poikaa kohtaan.** 
+        
+        Huomasin, miten vaikeaa keskittyminen ja oppiminen voi olla, kun aivot toimivat eri tavalla. 
+        Halusin luoda turvallisen paikan, jossa jokainen lapsi voi oppia omaan tahtiin ja löytää onnistumisen iloa. ❤️
+        """)
+        
+        st.markdown("**Tämä on sinun turvallinen oppimistilasi**")
+        st.markdown("Kerro meille nimesi, niin voimme seurata edistymistäsi:")
         
         nimi = st.text_input("Mikä on nimesi?", placeholder="Kirjoita nimesi tähän...", key="nimi_input", 
                             help="Syötä nimesi isolla fontilla!")
@@ -234,7 +244,14 @@ def nimi_sivu():
 
 def paa_menu():
     """Näyttää päävalikon"""
-    st.markdown('<h1 class="main-header">🌟 Oppimisseikkailu 🌟</h1>', unsafe_allow_html=True)
+    st.title("🌟 Oppimisseikkailu 🌟")
+    
+    # Ohjepainike ylänurkkaan
+    col_ohje1, col_ohje2 = st.columns([6, 1])
+    with col_ohje2:
+        if st.button("ℹ️ Ohjeet", help="Lue tarina ja käyttöohjeet"):
+            st.session_state.current_page = "ohje"
+            st.rerun()
     
     # Käyttäjätiedot
     col1, col2, col3 = st.columns([1, 2, 1])
@@ -320,6 +337,14 @@ def paa_menu():
     with col4:
         if st.button("🌌 Avaruus", use_container_width=True):
             st.session_state.teema = "avaruus"
+            st.rerun()
+    
+    # Ohje-painike keskitetysti
+    st.markdown("---")
+    col_ohje1, col_ohje2, col_ohje3 = st.columns([1, 2, 1])
+    with col_ohje2:
+        if st.button("💝 **Tarina & Ohjeet** 💝", key="ohje_btn", use_container_width=True):
+            st.session_state.current_page = "ohje"
             st.rerun()
 
 def matematiikka_peli():
@@ -1584,6 +1609,103 @@ def main():
         mindfulness_harjoitus()
     elif st.session_state.current_page == "musiikki":
         rauhoittava_musiikki()
+    elif st.session_state.current_page == "ohje":
+        ohje_sivu()
+    else:
+        st.error("Sivu ei ole vielä valmis! Palaa päävalikkoon.")
+        if st.button("← Takaisin päävalikkoon"):
+            st.session_state.current_page = "menu"
+            st.rerun()
+
+def ohje_sivu():
+    """Tarina ja ohjeet sovelluksesta"""
+    st.title("💝 Oppimisseikkailu - Tarina & Ohjeet")
+    
+    if st.button("← Takaisin"):
+        if st.session_state.kayttaja_nimi:
+            st.session_state.current_page = "menu"
+        else:
+            st.session_state.current_page = "nimi"
+        st.rerun()
+    
+    st.markdown("---")
+    
+    # Tarina
+    st.subheader("❤️ Miksi tämä sovellus syntyi?")
+    
+    st.markdown("""
+    **Tämä sovellus syntyi äidin rakkaudesta** ja tarpeesta auttaa omaa poikaa. 
+    
+    Huomasin arjessa, miten vaikeaa keskittyminen ja oppiminen voi olla, kun aivot toimivat eri tavalla. 
+    Perinteiset oppimismenetelmät tuntuivat liian raskailta, ja tarvitsimme jotain **lempeämpää, mukavampaa ja rohkaisevampaa**.
+    
+    Aloin kehittää sovellusta, joka **ymmärtää lapsen tarpeet**:
+    
+    - 🕐 **Lyhyet sessiot** - ei väsytä keskittymistä
+    - 🎉 **Välitön palaute** - kannustaa jatkamaan  
+    - 🌈 **Visuaalisuus** - tukee oppimista
+    - 💪 **Positiivisuus** - rakentaa itsetuntoa
+    - 🧘‍♀️ **Rauhoittuminen** - hallitsee stressiä
+    
+    > *"Halusin luoda turvallisen paikan, jossa jokainen lapsi voi oppia omaan tahtiin ja löytää onnistumisen iloa."*
+    """)
+    
+    st.markdown("---")
+    
+    # Kenelle tarkoitettu
+    st.subheader("🎯 Kenelle tämä on tarkoitettu?")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("**📚 Erityisesti:**")
+        st.markdown("""
+        - Lapsille, joilla on **keskittymisvaikeuksia**
+        - ADHD-diagnoosin saaneille lapsille
+        - Lapsille, jotka tarvitsevat **rauhallisemman oppimisympäristön**
+        - Oppimisvaikeuksien kanssa kamppaileville
+        """)
+    
+    with col2:
+        st.markdown("**🌟 Mutta myös:**")
+        st.markdown("""
+        - Kaikille lapsille, jotka haluavat oppia leikkien
+        - Vanhemmille, jotka etsivät **turvallista opiskeluapua**
+        - Opettajille täydentävänä työkaluna
+        - Perheille, jotka haluavat **positiivista oppimista** kotona
+        """)
+    
+    st.markdown("---")
+    
+    # Käyttöohjeet
+    st.subheader("📖 Miten käyttää?")
+    
+    st.markdown("""
+    **1. 📝 Aloita nimellä** - Anna lapselle oma käyttäjätunnus
+    
+    **2. 🎮 Valitse peli** - 5 erilaista oppimisaluetta
+    
+    **3. 🏆 Kerää pisteitä** - Jokainen yritys palkitaan
+    
+    **4. 📊 Seuraa edistymistä** - Katso kuinka hyvin menee
+    
+    **5. 💆‍♀️ Rauhoitu tarpeen mukaan** - Käytä keskittymisharjoituksia
+    """)
+    
+    st.info("💡 **Vinkki vanhemmille:** Istukaa lapsen viereen ensimmäisillä kerroilla. Kannustakaa ja juhlitaan yhdessä onnistumisia - pienetkin ovat tärkeitä! 🎉")
+    
+    st.markdown("---")
+    
+    # Turvallisuus
+    st.subheader("🔒 Turvallisuus & Yksityisyys")
+    
+    st.markdown("""
+    - ✅ Ei kerää henkilötietoja internetiin
+    - ✅ Ei mainoksia tai häiritseviä elementtejä
+    - ✅ Lapsiystävällinen ja turvallinen ympäristö
+    - ✅ Edistyminen tallennetaan vain laitteelle
+    - ✅ Ei maksullista sisältöä tai yllätyksiä
+    """)
 
 if __name__ == "__main__":
     main()

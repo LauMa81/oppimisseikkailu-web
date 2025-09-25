@@ -1104,7 +1104,7 @@ def hengitysharjoitus():
             st.session_state.hengitys_aika = time.time()
             st.rerun()
     else:
-        # Hengityksen ohjaus
+        # Yksinkertainen ja selkeä hengityksen ohjaus
         kulunut = time.time() - st.session_state.hengitys_aika
         
         if st.session_state.hengitys_vaihe == "sisään" and kulunut >= 4:
@@ -1116,26 +1116,60 @@ def hengitysharjoitus():
         elif st.session_state.hengitys_vaihe == "ulos" and kulunut >= 6:
             st.session_state.hengitys_vaihe = "sisään"
             st.session_state.hengitys_aika = time.time()
-            
-        # Näytä ohje
+        
+        # Yksinkertainen visuaalinen ohje ilman monimutkkaista animaatiota
         if st.session_state.hengitys_vaihe == "sisään":
-            st.markdown("""
-            <div style='text-align: center; font-size: 2rem; color: #1ABC9C; font-weight: bold; margin: 2rem 0;'>
-                🌬️ Hengitä SISÄÄN nenän kautta...
-            </div>
-            """, unsafe_allow_html=True)
+            pallo_emoji = "🔵"  # Sininen pallo
+            pallo_koko = "Iso"
+            ohje_teksti = "🌬️ Hengitä SISÄÄN nenän kautta..."
+            ohje_vari = "#1ABC9C"
+            tausta_vari = "linear-gradient(135deg, #1ABC9C, #16A085)"
         elif st.session_state.hengitys_vaihe == "pidätä":
-            st.markdown("""
-            <div style='text-align: center; font-size: 2rem; color: #F39C12; font-weight: bold; margin: 2rem 0;'>
-                ⏸️ Pidätä hengitystä hetki...
-            </div>
-            """, unsafe_allow_html=True)
+            pallo_emoji = "🟡"  # Keltainen pallo
+            pallo_koko = "Iso"
+            ohje_teksti = "⏸️ Pidätä hengitystä hetki..."
+            ohje_vari = "#F39C12"
+            tausta_vari = "linear-gradient(135deg, #F39C12, #D68910)"
         else:  # ulos
-            st.markdown("""
-            <div style='text-align: center; font-size: 2rem; color: #E67E22; font-weight: bold; margin: 2rem 0;'>
-                💨 Hengitä ULOS suun kautta...
+            pallo_emoji = "🔴"  # Punainen pallo
+            pallo_koko = "Pieni"
+            ohje_teksti = "💨 Hengitä ULOS suun kautta..."
+            ohje_vari = "#E67E22"
+            tausta_vari = "linear-gradient(135deg, #E67E22, #CA6F1E)"
+        
+        # Näytä selkeä visuaalinen ohje
+        st.markdown(f"""
+        <div style='text-align: center; margin: 3rem 0;'>
+            <div style='
+                background: {tausta_vari};
+                padding: 3rem;
+                border-radius: 20px;
+                margin: 2rem 0;
+                box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            '>
+                <div style='font-size: 6rem; margin-bottom: 1rem;'>
+                    {pallo_emoji}
+                </div>
+                <div style='
+                    font-size: 1.8rem; 
+                    color: white; 
+                    font-weight: bold; 
+                    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+                    margin: 1rem 0;
+                '>
+                    {ohje_teksti}
+                </div>
+                <div style='
+                    font-size: 1.3rem; 
+                    color: white; 
+                    opacity: 0.9;
+                    margin-top: 1rem;
+                '>
+                    Pallo: {pallo_koko} • {int(kulunut)} sekuntia
+                </div>
             </div>
-            """, unsafe_allow_html=True)
+        </div>
+        """, unsafe_allow_html=True)
             
         if st.button("⏹️ Lopeta harjoitus", use_container_width=True):
             st.session_state.hengitys_kaynnissa = False
@@ -1144,8 +1178,8 @@ def hengitysharjoitus():
             st.success("Hienoa! Sait 10 pistettä rauhoittumisesta! 🌟")
             st.rerun()
             
-        # Auto-refresh
-        time.sleep(0.5)
+        # Auto-refresh - hitaammin ja tasaisemmin
+        time.sleep(1)  # Pidempi tauko
         st.rerun()
 
 def mindfulness_harjoitus():

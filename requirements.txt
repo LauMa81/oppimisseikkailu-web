@@ -1,0 +1,2 @@
+# Oppimisseikkailu Web-versio - Riippuvuudet
+streamlit>=1.28.0

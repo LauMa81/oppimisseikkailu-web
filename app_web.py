@@ -1283,7 +1283,7 @@ def rauhoittava_musiikki():
     
     # Valinta audio/video
     st.markdown("### 🎧 Valitse tila:")
-    audio_tai_video = st.radio("", ["🔊 Vain ääni (suositeltu mobiiliin)", "📹 Video + ääni"], horizontal=True)
+    audio_tai_video = st.radio("Valitse toistotila", ["🔊 Vain ääni (suositeltu mobiiliin)", "📹 Video + ääni"], horizontal=True, label_visibility="collapsed")
     
     st.markdown("### Valitse rauhoittava ääni:")
     

@@ -489,27 +489,30 @@ def show_math_game():
             st.session_state.math_input = ""
         
         st.markdown("**Syötä vastaus painamalla numeroita:**")
-        numpad_rows = [["7", "8", "9"], ["4", "5", "6"], ["1", "2", "3"], ["0", "←", "OK"]]
-        for row in numpad_rows:
-            cols = st.columns(3)
-            for i, label in enumerate(row):
-                if cols[i].button(label, key=f"numpad_{label}"):
-                    if label.isdigit():
-                        st.session_state.math_input += label
-                    elif label == "←":
-                        st.session_state.math_input = st.session_state.math_input[:-1]
-                    elif label == "OK":
-                        if st.session_state.math_input:
-                            try:
-                                user_val = int(st.session_state.math_input)
-                                check_math_answer(user_val)
-                                st.session_state.math_input = ""
-                                # Jos vastaus oikein, etene automaattisesti
-                                if "OIKEIN" in st.session_state.math_feedback or "🎉" in st.session_state.math_feedback:
-                                    generate_math_question()
-                                    st.rerun()
-                            except ValueError:
-                                st.session_state.math_feedback = "Syötä vain numeroita!"
+        # Keskitetty numpad
+        center = st.columns([2, 3, 2])[1]
+        with center:
+            numpad_rows = [["7", "8", "9"], ["4", "5", "6"], ["1", "2", "3"], ["0", "←", "OK"]]
+            for row in numpad_rows:
+                cols = st.columns(3)
+                for i, label in enumerate(row):
+                    if cols[i].button(label, key=f"numpad_{label}"):
+                        if label.isdigit():
+                            st.session_state.math_input += label
+                        elif label == "←":
+                            st.session_state.math_input = st.session_state.math_input[:-1]
+                        elif label == "OK":
+                            if st.session_state.math_input:
+                                try:
+                                    user_val = int(st.session_state.math_input)
+                                    check_math_answer(user_val)
+                                    st.session_state.math_input = ""
+                                    # Jos vastaus oikein, etene automaattisesti
+                                    if "OIKEIN" in st.session_state.math_feedback or "🎉" in st.session_state.math_feedback:
+                                        generate_math_question()
+                                        st.rerun()
+                                except ValueError:
+                                    st.session_state.math_feedback = "Syötä vain numeroita!"
         
         st.markdown(f"**Vastaus:** `{st.session_state.math_input}`")
         

@@ -1783,7 +1783,7 @@ def ohje_sivu():
     🛡️ Tämä sovellus on tekijänoikeussuojattu. Henkilökohtainen käyttö sallittu. 
     Kopiointi, jakelu tai kaupallinen käyttö kielletty ilman lupaa.
     
-    📧 Lisenssikysymykset: [lisää sähköpostiosoitteesi]
+    📧 Lisenssikysymykset: laura.makila@lauramakila.fi
     """)
 
 if __name__ == "__main__":

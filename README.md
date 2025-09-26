@@ -2,7 +2,29 @@
 
 **Streamlit-pohjainen web-sovellus keskittymisvaikeuksien kanssa kamppaileville lapsille**
 
-**Versio:** 1.0.0 Web | **Päivitetty:** 25.9.2025
+**Versio:** 1.0.0 Web | **Päivitetty:** 26.9.2025
+
+---
+
+## ⚖️ TEKIJÄNOIKEUSSUOJAUS
+
+**© 2025 Laura - Kaikki oikeudet pidätetään**
+
+🛡️ **HUOMIO:** Tämä ohjelmisto on täysin tekijänoikeussuojattu. Luvaton kopiointi, jakelu tai muokkaus on **KIELLETTY** ja saattaa johtaa oikeustoimiin.
+
+**Sallittu käyttö:**
+- ✅ Henkilökohtainen, ei-kaupallinen käyttö
+- ✅ Käyttö omalla tietokoneella
+
+**Kielletty käyttö:**
+- ❌ Kopiointi tai jakelu kolmansille osapuolille  
+- ❌ Kaupallinen käyttö ilman lupaa
+- ❌ Lähdekoodin jakelu tai julkaiseminen
+- ❌ Muokkausten jakelu
+
+📧 **Lisenssikysymykset:** laura.makila@lauramakila.fi
+
+---
 
 ## 🚀 Käynnistys
 

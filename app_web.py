@@ -4,8 +4,20 @@
 Oppimisseikkailu Web-versio v1.0.0
 Streamlit-pohjainen web-sovellus keskittymisvaikeuksien kanssa kamppaileville lapsille
 
+© 2025 Laura - Kaikki oikeudet pidätetään
+Tämä teos on suojattu tekijänoikeudella ja kansainvälisillä tekijänoikeus sopimuksilla.
+Luvaton kopiointi, jakelu tai muokkaus on kielletty ja saattaa johtaa oikeustoimiin.
+
+KÄYTTÖLISENSSI:
+- Henkilökohtainen käyttö sallittu
+- Kaupallinen käyttö kielletty ilman lupaa
+- Koodin kopiointi tai jakelu kielletty
+- Muokkaukset sallittu vain omaan käyttöön
+
+Yhteystiedot: [lisää sähköpostiosoitteesi tähän]
+
 Versio: 1.0.0 Web
-Päivitetty: 23.9.2025
+Päivitetty: 26.9.2025
 """
 
 import streamlit as st
@@ -1628,6 +1640,16 @@ def edistymis_raportti():
 def main():
     """Pääfunktio"""
     
+    # Copyright-suojaus
+    st.sidebar.markdown("---")
+    st.sidebar.markdown("""
+    <div style='text-align: center; font-size: 0.8rem; color: #666;'>
+        <p>© 2025 Laura - Oppimisseikkailu<br>
+        Kaikki oikeudet pidätetään.<br>
+        Tämä sovellus on tekijänoikeussuojattu.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
     if st.session_state.current_page == "nimi":
         nimi_sivu()
     elif st.session_state.current_page == "menu":
@@ -1748,6 +1770,20 @@ def ohje_sivu():
     - ✅ Lapsiystävällinen ja turvallinen ympäristö
     - ✅ Edistyminen tallennetaan vain laitteelle
     - ✅ Ei maksullista sisältöä tai yllätyksiä
+    """)
+    
+    st.markdown("---")
+    
+    # Tekijänoikeussuojaus
+    st.subheader("⚖️ Tekijänoikeudet & Käyttöehdot")
+    
+    st.warning("""
+    **© 2025 Laura - Kaikki oikeudet pidätetään**
+    
+    🛡️ Tämä sovellus on tekijänoikeussuojattu. Henkilökohtainen käyttö sallittu. 
+    Kopiointi, jakelu tai kaupallinen käyttö kielletty ilman lupaa.
+    
+    📧 Lisenssikysymykset: [lisää sähköpostiosoitteesi]
     """)
 
 if __name__ == "__main__":

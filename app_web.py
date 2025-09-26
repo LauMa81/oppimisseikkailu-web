@@ -1290,7 +1290,7 @@ def rauhoittava_musiikki():
     # Musiikkivaihtoehdot upotettuina
     musiikit = [
         ("🌊 Meren aaltojen ääni", "WHPEKLQID4U", "Kuvittele olevasi rannalla kuuntelemassa aaltoja"),
-        ("🌧️ Sateen ropina", "q76bMs-NwRk", "Rauhallinen sadteen ääni ikkunassa"),
+        ("🌧️ Sateen ropina", "q76bMs-NwRk", "Rauhallinen sateen ääni ikkunassa"),
         ("🐦 Lintujen laulu", "LYekcN76hF4", "Kauniita laulavia lintuja puistossa"),
         ("🔥 Takkatuli putoilee", "L_LUpnjgPso", "Lämmin takkatuli särisee rauhallisesti"),
         ("🌳 Metsän äänet", "xNN7iTA57jM", "Tuulen huminaa lehvistössä"),

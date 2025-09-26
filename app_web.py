@@ -1109,9 +1109,9 @@ def hengitysharjoitus():
             Seuraa näitä ohjeita rauhallisesti:<br><br>
             <strong>1.</strong> Istu mukavasti ja sulje silmäsi<br>
             <strong>2.</strong> Hengitä syvään sisään nenän kautta (4 sekuntia)<br>
-            <strong>3.</strong> Pidätä hengitystä hetken (2 sekuntia)<br>
+            <strong>3.</strong> Pidätä hengitystä hetki (2 sekuntia)<br> 
             <strong>4.</strong> Hengitä hitaasti ulos suun kautta (6 sekuntia)<br>
-            <strong>5.</strong> Toista 5-10 kertaa
+            <strong>5.</strong> Toista tätä 5 kertaa
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -1270,26 +1270,69 @@ def rauhoittava_musiikki():
     """, unsafe_allow_html=True)
     
     # Rauhoittavat äänet/musiikki vaihtoehdot
-    aani_vaihtoehdot = [
-        ("🌊 Meren aaltojen ääni", "Kuvittele olevasi rannalla kuuntelemassa aaltoja"),
-        ("🌧️ Sateen ropina", "Rauhallinen sadteen ääni ikkunassa"), 
-        ("🐦 Lintujen laulu", "Kauniita laulavia lintuja puistossa"),
-        ("🔥 Takkatuli putoilee", "Lämmin takkatuli särisee rauhallisesti"),
-        ("🌳 Metsän äänet", "Tuulen huminaa lehvistössä"),
-        ("🎼 Pehmeä pianomusiikki", "Rauhallinen klassinen piano")
-    ]
+    st.markdown("### Valitse rauhoittava ääni:")
     
-    for emoji_kuvaus, selitys in aani_vaihtoehdot:
-        if st.button(emoji_kuvaus, use_container_width=True):
-            st.info(f"🎧 {selitys}")
-            st.markdown("*Sulje silmäsi ja kuvittele kuuntelevasi tätä ääntä 30 sekuntia...*")
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        if st.button("🌊 Meren aaltojen ääni", use_container_width=True):
+            st.info("🎧 Kuvittele olevasi rannalla kuuntelemassa aaltoja")
+            st.markdown("**Kuuntele tätä YouTube-videota rauhoittavasta meren äänestä:**")
+            st.markdown("[🌊 Rauhoittavat meren äänet (YouTube)](https://www.youtube.com/watch?v=WHPEKLQID4U)")
+            st.session_state.pisteet += 3
+            tallenna_edistyminen()
+            
+        if st.button("🌧️ Sateen ropina", use_container_width=True):
+            st.info("🎧 Rauhallinen sadteen ääni ikkunassa")
+            st.markdown("**Kuuntele tätä YouTube-videota rauhoittavasta sateen äänestä:**")
+            st.markdown("[🌧️ Rauhoittava sade (YouTube)](https://www.youtube.com/watch?v=q76bMs-NwRk)")
+            st.session_state.pisteet += 3
+            tallenna_edistyminen()
+            
+        if st.button("🐦 Lintujen laulu", use_container_width=True):
+            st.info("🎧 Kauniita laulavia lintuja puistossa")
+            st.markdown("**Kuuntele tätä YouTube-videota lintujen laulusta:**")
+            st.markdown("[🐦 Lintujen laulu metsässä (YouTube)](https://www.youtube.com/watch?v=KqhfLTsEeZg)")
             st.session_state.pisteet += 3
             tallenna_edistyminen()
     
-    if st.button("😌 Kuuntelin ja rauhoituin", type="primary", use_container_width=True):
+    with col2:
+        if st.button("🔥 Takkatuli putoilee", use_container_width=True):
+            st.info("🎧 Lämmin takkatuli särisee rauhallisesti")
+            st.markdown("**Kuuntele tätä YouTube-videota takkatulen äänestä:**")
+            st.markdown("[🔥 Rauhoittava takkatuli (YouTube)](https://www.youtube.com/watch?v=L_LUpnjgPso)")
+            st.session_state.pisteet += 3
+            tallenna_edistyminen()
+            
+        if st.button("🌳 Metsän äänet", use_container_width=True):
+            st.info("🎧 Tuulen huminaa lehvistössä")
+            st.markdown("**Kuuntele tätä YouTube-videota metsän äänistä:**")
+            st.markdown("[🌳 Metsän rauhoittavat äänet (YouTube)](https://www.youtube.com/watch?v=xNN7iTA57jM)")
+            st.session_state.pisteet += 3
+            tallenna_edistyminen()
+            
+        if st.button("🎼 Pehmeä pianomusiikki", use_container_width=True):
+            st.info("🎧 Rauhallinen klassinen piano")
+            st.markdown("**Kuuntele tätä YouTube-videota rauhoittavasta pianomusiikista:**")
+            st.markdown("[🎼 Rauhoittava piano (YouTube)](https://www.youtube.com/watch?v=1ZYbU82GVz4)")
+            st.session_state.pisteet += 3
+            tallenna_edistyminen()
+    
+    st.markdown("---")
+    
+    # Yleinen YouTube-haku 
+    st.markdown("### 🔍 Tai etsi oma rauhoittava musiikki:")
+    st.markdown("**Suositukset YouTube-hauiksi:**")
+    st.markdown("- 'relaxing music for kids'")
+    st.markdown("- 'nature sounds for children'") 
+    st.markdown("- 'calm music for studying'")
+    st.markdown("- 'meditation music for kids'")
+    
+    if st.button("😌 Kuuntelin rauhoittavaa musiikkia", type="primary", use_container_width=True):
         st.session_state.pisteet += 10 
         tallenna_edistyminen()
         st.success("Hienoa! Rauhoittuminen on tärkeää! Sait 10 pistettä! 🎶")
+        st.balloons()
 
 def taukoliikunta():
     """Taukoliikunta-harjoitukset"""

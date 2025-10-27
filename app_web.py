@@ -485,7 +485,7 @@ def show_math_game():
         """, unsafe_allow_html=True)
         
         # Vastauskenttä
-        user_answer = st.number_input("Mikä on vastaus?", min_value=-1000, max_value=1000, step=1, key="math_user_answer")
+        user_answer = st.number_input("Mikä on vastaus?", min_value=-1000, max_value=1000, step=1, value=0, key="math_user_answer")
         
         col1, col2, col3 = st.columns(3)
         
@@ -1326,7 +1326,7 @@ def rauhoittava_musiikki():
                     allow="autoplay; encrypted-media">
                     </iframe>
                     <p style='font-size: 0.9rem; color: #666; margin-top: 0.5rem;'>
-                        💡 Voit säätää äänenvoimakkuutta videon ohjaimista
+                        💡 Voit säätää äänenvoimakkuutta videon ohjaimista, tai laitteestasi.
                     </p>
                 </div>
                 """, unsafe_allow_html=True)
@@ -1337,14 +1337,6 @@ def rauhoittava_musiikki():
             
     st.markdown("---")
     
-    # Lisäohje
-    st.markdown("### � Vinkkejä:")
-    st.markdown("""
-    - **📱 Matkapuhelin:** Ääni jatkuu myös kun vaihdat toiseen sovellukseen  
-    - **🔊 Äänenvoimakkuus:** Säädä videon omista ohjaimista
-    - **⏸️ Tauottaminen:** Klikkaa pause-painiketta tarpeen mukaan
-    - **🎵 Useampi ääni:** Voit avata useita erilaisia ääniä samanaikaisesti
-    """)
     
     if st.button("😌 Olen rauhoittunut musiikilla", type="primary", use_container_width=True):
         st.session_state.pisteet += 10 
